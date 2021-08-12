@@ -1,6 +1,10 @@
 var turn = 0;
-var xCellCliked = '';
-var oCellCliked = '';
+
+var xIndex = 0;
+var xClicked = [];
+
+var oIndex = 0;
+var oClicked = [];
 
 function clicked(id)
 {
@@ -11,12 +15,12 @@ function clicked(id)
     if(turn % 2 === 0)
     {
         cell.value = 'x';
-        xCellCliked += id
+        xClicked[xIndex++] = id;
     }
     else
     {
         cell.value = 'o';
-        oCellCliked += id;
+        oClicked[oIndex++] = id;
     }
     
     turn++;
@@ -25,9 +29,30 @@ function clicked(id)
 
 function check()
 {
-    var winningCombinations = ['123','456','789','147','258','369','159','357']
+    var winningCombinations = [
+        [1,2,3],[4,5,6],[7,8,9],
+        [1,4,7],[2,5,8],[3,6,9],
+        [1,5,9],[3,5,7]
+    ]
 
-    winningCombinations.forEach(element => {
-        alert(xCellCliked.includes(element));
-    });
+    var xPoints = 0;
+    var oPoints = 0;
+
+    for(var i = 0; i < 8; i++)
+    {
+        for(var j = 0; j < 3; j++)
+        {
+            if(xClicked.includes(winningCombinations[i][j]))
+                ++xPoints; 
+            if(oClicked.includes(winningCombinations[i][j]))
+                ++oPoints;   
+        }
+        if(xPoints == 3) alert('Player 1 won!');
+        if(oPoints == 3) alert('Player 2 won!');
+
+        if(xClicked.length >= 5 || oClicked.length >= 5) alert('Remis!');
+
+        xPoints = 0;
+        oPoints = 0;
+    }
 }
