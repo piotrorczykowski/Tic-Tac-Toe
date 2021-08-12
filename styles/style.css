@@ -19,7 +19,8 @@
 h1
 {
     margin-bottom: 40px;
-    font-size: 40px;
+    font-size: 60px;
+    font-family: 'Tourney', cursive;
 }
 
 .cell
