@@ -47,10 +47,31 @@ function check()
             if(oClicked.includes(winningCombinations[i][j]))
                 ++oPoints;   
         }
-        if(xPoints == 3) alert('Player 1 won!');
-        if(oPoints == 3) alert('Player 2 won!');
+        if(xPoints == 3)
+        {
+            //alert('Player 1 won!');
+            setTimeout(function()
+            {
+                window.location.reload(true);
+            },500);
+        }
+        if(oPoints == 3)
+        {
+            //alert('Player 2 won!');
+            setTimeout(function()
+            {
+                window.location.reload(true);
+            },500);
+        }
 
-        if(xClicked.length >= 5 || oClicked.length >= 5) alert('Remis!');
+        if(xClicked.length >= 5 || oClicked.length >= 5)
+        {
+            //alert('Remis!');
+            setTimeout(function()
+            {
+                window.location.reload(true);
+            },500);
+        }
 
         xPoints = 0;
         oPoints = 0;
