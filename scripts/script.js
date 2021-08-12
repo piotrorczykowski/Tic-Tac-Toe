@@ -27,6 +27,25 @@ function clicked(id)
     check();
 }
 
+function displayMessage(string)
+{
+    var message = document.createElement("div");
+    message.classList.add('message')
+    var anchor = document.getElementById('container');
+
+    message.innerHTML = '<h1>' + string +'</h1>'
+    anchor.id = 'hide';
+    setTimeout(function()
+    {
+    document.body.insertBefore(message,anchor), anchor.style.display='none';
+    }, 300);
+
+    setTimeout(function()
+    {
+        window.location.reload(true);
+    },1000);
+}
+
 function check()
 {
     var winningCombinations = [
@@ -49,28 +68,25 @@ function check()
         }
         if(xPoints == 3)
         {
-            //alert('Player 1 won!');
             setTimeout(function()
             {
-                window.location.reload(true);
-            },500);
+                displayMessage('Player 1 won!');
+            },200);
         }
         if(oPoints == 3)
         {
-            //alert('Player 2 won!');
             setTimeout(function()
             {
-                window.location.reload(true);
-            },500);
+                displayMessage('Player 2 won!');
+            },200);
         }
 
         if(xClicked.length >= 5 || oClicked.length >= 5)
         {
-            //alert('Remis!');
             setTimeout(function()
             {
-                window.location.reload(true);
-            },500);
+                displayMessage('Remis!');
+            },200);
         }
 
         xPoints = 0;
