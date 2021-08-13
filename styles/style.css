@@ -80,3 +80,11 @@ h1
     from {opacity: 1;}
     to {opacity: 0;}
 }
+
+#first-row, #second-row, #third-row
+{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-shrink: 3;
+}
